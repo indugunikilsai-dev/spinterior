@@ -143,6 +143,7 @@ function Footer() {
           {services.slice(0, 5).map((s) => (
             <Link key={s.title} to="/services">{s.title}</Link>
           ))}
+          <Link to="/services#home-services">Home Services</Link>
         </div>
         <div>
           <h4>Contact</h4>

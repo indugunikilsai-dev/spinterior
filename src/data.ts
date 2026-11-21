@@ -191,6 +191,81 @@ export const services = [
   },
 ]
 
+export const homeServices = [
+  {
+    title: 'Carpentry',
+    icon: 'saw',
+    text: 'Custom furniture, repairs and fittings by skilled carpenters.',
+    tasks: ['Furniture making & repair', 'Door & window fixing', 'Shelves, beds & cots', 'Hinges, locks & handles'],
+  },
+  {
+    title: 'Electrical',
+    icon: 'bolt',
+    text: 'Safe wiring, fittings and fault repairs by licensed electricians.',
+    tasks: ['Wiring & rewiring', 'Switches, sockets & DBs', 'Lights & ceiling fans', 'Inverter & geyser fitting'],
+  },
+  {
+    title: 'Plumbing',
+    icon: 'drop',
+    text: 'Leak repairs, new lines and bathroom fittings done right.',
+    tasks: ['Leak & blockage repair', 'Tap & shower fitting', 'Water tank & motor work', 'Sanitaryware installation'],
+  },
+  {
+    title: 'Painting',
+    icon: 'brush',
+    text: 'Interior and exterior painting with clean, dust-managed sites.',
+    tasks: ['Interior & exterior paint', 'Texture & designer walls', 'Wood polish & lacquer', 'Wallpaper installation'],
+  },
+  {
+    title: 'Tiling & Flooring',
+    icon: 'tiles',
+    text: 'Precise tile, marble and wooden flooring work.',
+    tasks: ['Floor & wall tiling', 'Marble & granite laying', 'Wooden & vinyl floors', 'Grouting & tile repair'],
+  },
+  {
+    title: 'False Ceiling',
+    icon: 'ceiling',
+    text: 'Gypsum, POP and PVC ceilings with integrated lighting.',
+    tasks: ['Gypsum & POP ceilings', 'PVC & wooden panels', 'Cove & profile lighting', 'Ceiling repairs'],
+  },
+  {
+    title: 'Civil & Masonry',
+    icon: 'brick',
+    text: 'Wall changes, plastering and structural repairs.',
+    tasks: ['Brick & block work', 'Plastering & putty', 'Wall breaking & partitions', 'Crack & damage repair'],
+  },
+  {
+    title: 'Waterproofing',
+    icon: 'shield',
+    text: 'Lasting protection for terraces, bathrooms and walls.',
+    tasks: ['Terrace waterproofing', 'Bathroom & sunken areas', 'Damp & seepage treatment', 'Water tank sealing'],
+  },
+  {
+    title: 'Glass & Aluminium',
+    icon: 'window',
+    text: 'Windows, partitions and shower enclosures made to measure.',
+    tasks: ['Sliding windows', 'Glass partitions', 'Shower enclosures', 'Mosquito mesh & grills'],
+  },
+  {
+    title: 'Fabrication & Welding',
+    icon: 'grid',
+    text: 'Gates, grills and railings in MS and stainless steel.',
+    tasks: ['Gates & grills', 'Staircase railings', 'Balcony safety grills', 'Shed & frame work'],
+  },
+  {
+    title: 'Installation & Fitting',
+    icon: 'drill',
+    text: 'Quick, tidy installation of everything you bring home.',
+    tasks: ['TV & wall mounting', 'Curtain rods & blinds', 'Appliance installation', 'Mirrors & accessories'],
+  },
+  {
+    title: 'Deep Cleaning',
+    icon: 'sparkle',
+    text: 'Post-construction and move-in cleaning, top to bottom.',
+    tasks: ['Full-home deep clean', 'Kitchen & bathroom', 'Sofa & mattress', 'Post-renovation clean-up'],
+  },
+]
+
 export const faqs = [
   {
     q: 'How long does a full home interior take?',
