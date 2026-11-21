@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import { Cta, ProcessSteps, ProjectCard, SectionHead, ServiceCards, Testimonials } from '../components/Sections'
 import { projects } from '../data'
+import { AREAS } from '../seo'
 
 const HERO_IMAGES = [
   { src: '/images/banjara-1.webp', alt: 'Modern open-plan living room with timber feature wall and kitchen beyond' },
@@ -29,7 +30,7 @@ export default function Home() {
       <section className="hero">
         <div className="container hero__grid">
           <div className="hero__content">
-            <p className="eyebrow eyebrow--light">Interior Design & Turnkey Execution</p>
+            <p className="eyebrow eyebrow--light">Interior Designers in Hyderabad</p>
             <h1>
               Spaces that feel <em>personal</em>, crafted to last.
             </h1>
@@ -141,6 +142,30 @@ export default function Home() {
             </Link>
           </SectionHead>
           <ProcessSteps />
+        </div>
+      </section>
+
+      <section className="section areas">
+        <div className="container areas__grid">
+          <div className="reveal">
+            <p className="eyebrow">Areas we serve</p>
+            <h2>Interior designers &amp; home services across Hyderabad</h2>
+            <p className="areas__lead">
+              From our studio in Kistareddypet, Patancheru, our designers, carpenters, electricians, plumbers and
+              painters work in homes and offices all over Hyderabad and Sangareddy. Modular kitchens, wardrobes,
+              full home interiors, renovation and everyday repairs, all handled by one team.
+            </p>
+            <Link to="/services#home-services" className="link-arrow">
+              Explore home services <Icon name="arrow" size={18} />
+            </Link>
+          </div>
+          <ul className="areas__list reveal">
+            {AREAS.map((a) => (
+              <li key={a}>
+                <Icon name="pin" size={15} /> {a}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

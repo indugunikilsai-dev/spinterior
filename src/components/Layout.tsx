@@ -2,6 +2,7 @@ import { useEffect, useState, type CSSProperties } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { CONTACT, NAV, services } from '../data'
 import Icon from './Icon'
+import { getSeo, headTags } from '../seo'
 
 function useReveal(key: string) {
   useEffect(() => {
@@ -19,6 +20,18 @@ function useReveal(key: string) {
     els.forEach((el) => io.observe(el))
     return () => io.disconnect()
   }, [key])
+}
+
+// Keeps the page title, meta tags and structured data in sync on client-side navigation.
+function useHeadTags(pathname: string) {
+  useEffect(() => {
+    const seo = getSeo(pathname)
+    document.head.querySelectorAll('[data-seo]').forEach((el) => el.remove())
+    const anchor = document.head.querySelector('meta[name="viewport"]')
+    if (anchor) anchor.insertAdjacentHTML('afterend', headTags(seo))
+    else document.head.insertAdjacentHTML('afterbegin', headTags(seo))
+    document.title = seo.title
+  }, [pathname])
 }
 
 function Logo({ light = false }: { light?: boolean }) {
@@ -129,7 +142,7 @@ function Footer() {
         <div>
           <Logo light />
           <p className="footer__about">
-            Residential and commercial interiors, modular kitchens and turnkey execution across Hyderabad.
+            Interior designers in Hyderabad for homes, modular kitchens and offices, plus carpentry, electrical, plumbing and painting services.
           </p>
         </div>
         <div>
@@ -195,6 +208,7 @@ export default function Layout() {
   }, [pathname, hash])
 
   useReveal(pathname)
+  useHeadTags(pathname)
 
   return (
     <>
