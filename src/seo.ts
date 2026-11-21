@@ -4,6 +4,14 @@ export const SITE_URL = 'https://www.sp-interior.in'
 export const BUSINESS_NAME = 'SP Interior Design and Studio'
 const DEFAULT_IMAGE = '/images/hero.jpg'
 const BUSINESS_ID = `${SITE_URL}/#business`
+const ALT_NAMES = [
+  'SP Interior',
+  'SP Interiors',
+  'SP Interior Design',
+  'SP Interior Studio',
+  'SP Interior Hyderabad',
+  'SP Interior Design and Studio Hyderabad',
+]
 
 export const AREAS = [
   'Patancheru',
@@ -53,7 +61,7 @@ const business = {
   '@type': 'HomeAndConstructionBusiness',
   '@id': BUSINESS_ID,
   name: BUSINESS_NAME,
-  alternateName: 'SP Interior',
+  alternateName: ALT_NAMES,
   description:
     'Interior designers and home service experts in Hyderabad: home interiors, modular kitchens, wardrobes, commercial interiors, carpentry, electrical, plumbing, painting and renovation.',
   url: SITE_URL + '/',
@@ -96,13 +104,34 @@ const business = {
 const website = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: BUSINESS_NAME,
-  alternateName: 'SP Interior',
+  name: 'SP Interior',
+  alternateName: ALT_NAMES,
   url: SITE_URL + '/',
+  inLanguage: 'en-IN',
   publisher: { '@id': BUSINESS_ID },
 }
 
 export const ROUTES = ['/', '/services', '/projects', '/process', '/contact', ...projects.map((p) => `/projects/${p.id}`)]
+
+/** Photos shown on each page, listed in the image sitemap so they can appear in Google Images. */
+export function pageImages(pathname: string): string[] {
+  const path = pathname.replace(/\/+$/, '') || '/'
+  const project = projects.find((p) => `/projects/${p.id}` === path)
+  const list: Record<string, string[]> = {
+    '/': [
+      '/images/banjara-1.webp',
+      '/images/kitchen-1.webp',
+      '/images/about.webp',
+      ...services.map((s) => s.image),
+      ...projects.slice(0, 5).map((p) => p.images[0]),
+    ],
+    '/services': ['/images/kitchen-1.webp', ...services.map((s) => s.image), '/images/bath-2.webp'],
+    '/projects': ['/images/penthouse-1.webp', ...projects.map((p) => p.images[0])],
+    '/process': ['/images/office-1.webp'],
+    '/contact': ['/images/villa-1.webp'],
+  }
+  return [...new Set(project ? project.images : (list[path] ?? []))]
+}
 
 export function getSeo(pathname: string): Seo {
   const path = pathname.replace(/\/+$/, '') || '/'
