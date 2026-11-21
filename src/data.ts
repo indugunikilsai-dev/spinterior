@@ -151,21 +151,21 @@ export const services = [
     title: 'Residential Interiors',
     text: 'Complete interiors for apartments, villas and independent homes, concept to handover.',
     icon: 'home',
-    image: '/images/apartment-1.webp',
+    image: '/images/site-3.webp',
     points: ['Space planning & layouts', 'False ceilings & lighting', 'Furniture & soft furnishings', 'Décor & styling'],
   },
   {
     title: 'Modular Kitchens',
     text: 'Ergonomic kitchens with premium hardware, durable finishes and smart storage.',
     icon: 'kitchen',
-    image: '/images/kitchen-1.webp',
+    image: '/images/site-0.webp',
     points: ['L, U, parallel & island layouts', 'BWP plywood carcasses', 'Soft-close hardware', 'Quartz & granite counters'],
   },
   {
     title: 'Wardrobes & Storage',
     text: 'Sliding, hinged and walk-in wardrobes with tailored internals and soft-close fittings.',
     icon: 'wardrobe',
-    image: '/images/villa-2.webp',
+    image: '/images/site-1.webp',
     points: ['Walk-in closets', 'Sliding & hinged shutters', 'Lofts & overhead storage', 'Custom internals'],
   },
   {
@@ -297,27 +297,6 @@ export const process = [
   { step: '05', title: 'Handover', text: 'Final styling, deep cleaning and a walkthrough, backed by our warranty.' },
 ]
 
-export const testimonials = [
-  {
-    quote:
-      'SP Interior understood our family better than we did. The living room is now where everyone wants to be, and the project finished a week ahead of schedule.',
-    name: 'Anitha & Ravi K.',
-    role: 'Villa owners, Jubilee Hills',
-  },
-  {
-    quote:
-      'Our restaurant needed to feel premium without a premium timeline. They delivered a space our guests photograph every single night.',
-    name: 'Karthik M.',
-    role: 'Founder, Ember Dining Lounge',
-  },
-  {
-    quote:
-      'Clear pricing, no surprises, and a modular kitchen that is genuinely a joy to cook in. I recommend them to everyone.',
-    name: 'Sowmya R.',
-    role: 'Homeowner, Kokapet',
-  },
-]
-
 export const NAV = [
   { to: '/', label: 'Home' },
   { to: '/services', label: 'Services' },
@@ -335,7 +314,7 @@ export const CONTACT = {
   address: 'Nethaji Nagar, Kistareddypet, Patancheru, Hyderabad, Telangana',
   shortAddress: 'Kistareddypet, Patancheru',
   mapLink: 'https://www.google.com/maps/place/Nethaji+nagar+kistareddypet+Patancheru/@17.5481758,78.2898909,17z/data=!4m6!3m5!1s0x3bcbf300711074d1:0x868766161627ad70!8m2!3d17.5481769!4d78.2898931!16s%2Fg%2F11vq9pfw2k?hl=en&entry=ttu&g_ep=EgoyMDI2MTExNy4wIKXMDSoASAFQAw%3D%3D',
-  hours: 'Mon – Sat, 10:00 am – 7:00 pm',
+  hours: 'Open 24/7 — all days',
 }
 
 export const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')

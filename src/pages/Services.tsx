@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
-import { PageHero, SectionHead } from '../components/Sections'
+import { PageHero, SectionHead, SiteWork } from '../components/Sections'
 import { CONTACT, homeServices, services, slug } from '../data'
 
 const HOME_PERKS = [
@@ -23,6 +23,8 @@ export default function Services() {
         text="Design, manufacturing, installation and everyday home services, delivered by one accountable team."
         image="/images/kitchen-1.webp"
       />
+
+      <SiteWork />
 
       <section className="section">
         <div className="container">

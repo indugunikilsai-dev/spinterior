@@ -1,7 +1,43 @@
-import { useEffect, useState, type FormEvent, type ReactNode } from 'react'
+import { useState, type FormEvent, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import { CONTACT, process, services, slug, testimonials, type Project } from '../data'
+import { CONTACT, process, services, slug, type Project } from '../data'
 import Icon from './Icon'
+
+/* ---------- recent work from our own sites ---------- */
+
+// Photos from our own recent sites, shown below the Services page banner.
+const SITE_WORK = [
+  { src: '/images/site-3.webp', title: 'TV unit', alt: 'TV unit with fluted wood panelling and lit display cabinet' },
+  { src: '/images/site-0.webp', title: 'Modular kitchen', alt: 'L-shaped modular kitchen in aqua and white gloss' },
+  { src: '/images/site-1.webp', title: 'Sliding wardrobe', alt: 'Sage green sliding wardrobe with gold inlay lines' },
+  { src: '/images/site-8.webp', title: 'Wardrobe & dresser', alt: 'White gloss wardrobe with wood accent band and built-in dressing unit' },
+  { src: '/images/site-7.webp', title: 'Storage bed', alt: 'King-size storage bed with tufted headboard and side tables' },
+  { src: '/images/site-2.webp', title: 'Living partition', alt: 'Wooden slat partition with lit display niches' },
+  { src: '/images/site-4.webp', title: 'Partition & storage', alt: 'Wood and white partition unit with shoe cabinet below' },
+  { src: '/images/site-6.webp', title: 'Pooja unit', alt: 'Wooden pooja unit with cut-out Ganesha and bell designs' },
+  { src: '/images/site-5.webp', title: 'House elevation', alt: 'Modern house front elevation with orange and charcoal cladding' },
+]
+
+export function SiteWork() {
+  return (
+    <section className="site-work">
+      <div className="container">
+        <div className="site-work__head">
+          <p className="eyebrow">From our sites</p>
+          <h2>Recent work by our team</h2>
+        </div>
+        <ul className="site-work__strip">
+          {SITE_WORK.map((w) => (
+            <li key={w.src} className="site-work__item">
+              <img src={w.src} alt={w.alt} loading="lazy" />
+              <span>{w.title}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
 
 /* ---------- page banner for inner pages ---------- */
 
@@ -141,52 +177,6 @@ export function ProcessSteps() {
         </li>
       ))}
     </ol>
-  )
-}
-
-/* ---------- testimonials ---------- */
-
-export function Testimonials() {
-  const [i, setI] = useState(0)
-  const [paused, setPaused] = useState(false)
-
-  useEffect(() => {
-    if (paused) return
-    const t = setInterval(() => setI((x) => (x + 1) % testimonials.length), 6000)
-    return () => clearInterval(t)
-  }, [paused])
-
-  const t = testimonials[i]
-  return (
-    <section className="section testimonials">
-      <div
-        className="container testimonials__inner reveal"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
-        <p className="eyebrow">Client stories</p>
-        <span className="testimonials__mark">
-          <Icon name="quote" size={40} />
-        </span>
-        <blockquote key={i}>
-          <p>{t.quote}</p>
-          <footer>
-            <strong>{t.name}</strong>
-            <span>{t.role}</span>
-          </footer>
-        </blockquote>
-        <div className="testimonials__dots">
-          {testimonials.map((x, k) => (
-            <button
-              key={x.name}
-              className={k === i ? 'active' : ''}
-              aria-label={`Show testimonial ${k + 1}`}
-              onClick={() => setI(k)}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
   )
 }
 

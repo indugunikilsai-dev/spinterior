@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
-import { Cta, ProcessSteps, ProjectCard, SectionHead, ServiceCards, Testimonials } from '../components/Sections'
+import { Cta, ProcessSteps, ProjectCard, SectionHead, ServiceCards } from '../components/Sections'
 import { projects } from '../data'
 import { AREAS } from '../seo'
 
@@ -9,6 +9,7 @@ const HERO_IMAGES = [
   { src: '/images/banjara-1.webp', alt: 'Modern open-plan living room with timber feature wall and kitchen beyond' },
   { src: '/images/kitchen-1.webp', alt: 'Modular kitchen with quartz counter and brass fittings' },
 ]
+
 
 // Swaps the large and small hero images every second.
 function useHeroSwap(ms = 1000) {
@@ -169,7 +170,30 @@ export default function Home() {
         </div>
       </section>
 
-      <Testimonials />
+      <section className="founder">
+        <div className="container founder__grid">
+          <figure className="founder__media reveal">
+            <img src="/images/founder.webp" alt="Shekhar, founder of SP Interior" loading="lazy" />
+          </figure>
+          <div className="founder__copy reveal">
+            <p className="eyebrow">Meet the founder</p>
+            <h2>Shekhar</h2>
+            <p className="founder__role">Founder, SP Interior</p>
+            <blockquote className="founder__quote">
+              “Every home we work on is someone's dream. Our job is to build it with honest pricing, careful
+              craftsmanship and on-time delivery.”
+            </blockquote>
+            <p className="founder__text">
+              Shekhar leads SP Interior from our studio in Kistareddypet, Patancheru, overseeing every project from
+              the first site visit to the final handover.
+            </p>
+            <Link to="/contact" className="link-arrow">
+              Talk to Shekhar <Icon name="arrow" size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <Cta />
     </>
   )
