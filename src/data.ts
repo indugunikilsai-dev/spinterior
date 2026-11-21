@@ -329,7 +329,7 @@ export const NAV = [
 export const CONTACT = {
   phone: '+91 80969 75820',
   phoneHref: 'tel:+918096975820',
-  email: 'hello@spinterior.in',
+  email: 'shekharpal809697@gmail.com',
   whatsappBase: 'https://wa.me/918096975820',
   whatsapp: 'https://wa.me/918096975820?text=' + encodeURIComponent('Hi SP Interior, I would like to know more about your interior services.'),
   address: 'Nethaji Nagar, Kistareddypet, Patancheru, Hyderabad, Telangana',
