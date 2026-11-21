@@ -306,6 +306,7 @@ export const NAV = [
 ]
 
 export const CONTACT = {
+  founder: 'Shekhar Pal',
   phone: '+91 80969 75820',
   phoneHref: 'tel:+918096975820',
   email: 'shekharpal809697@gmail.com',

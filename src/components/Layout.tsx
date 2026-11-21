@@ -87,6 +87,21 @@ function Header() {
 
   return (
     <header className={`header ${scrolled || open ? 'header--solid' : ''} ${open ? 'header--open' : ''}`}>
+      <div className="topbar">
+        <div className="container topbar__inner">
+          <span className="topbar__founder">
+            <span className="topbar__label">Founder:</span> <strong>{CONTACT.founder}</strong>
+          </span>
+          <div className="topbar__contact">
+            <a href={CONTACT.phoneHref} aria-label={`Call ${CONTACT.phone}`}>
+              <Icon name="phone" size={14} /> <span>{CONTACT.phone}</span>
+            </a>
+            <a href={`mailto:${CONTACT.email}`} aria-label={`Email ${CONTACT.email}`}>
+              <Icon name="mail" size={14} /> <span className="topbar__email">{CONTACT.email}</span>
+            </a>
+          </div>
+        </div>
+      </div>
       <div className="container header__inner">
         <Logo />
         <nav id="main-nav" className={`nav ${open ? 'nav--open' : ''}`} aria-label="Main">

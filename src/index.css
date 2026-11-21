@@ -23,7 +23,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 110px;
+  scroll-padding-top: 146px;
   scrollbar-width: none; /* hide scrollbar (Firefox), page still scrolls */
 }
 
@@ -260,6 +260,94 @@ p {
   }
 }
 
+/* ---------- top bar (founder + contact) ---------- */
+
+:root {
+  --topbar-h: 36px;
+}
+
+@media (max-width: 560px) {
+  :root {
+    --topbar-h: 32px;
+  }
+}
+
+.topbar {
+  background: var(--sand);
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--stone);
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  overflow: hidden;
+}
+
+.topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: var(--topbar-h);
+  white-space: nowrap;
+}
+
+.topbar__founder strong {
+  color: var(--accent-dark);
+  font-weight: 600;
+}
+
+.topbar__contact {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-width: 0;
+}
+
+.topbar__contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  transition: color 0.3s;
+}
+
+.topbar__contact a:hover {
+  color: var(--accent);
+}
+
+.topbar__contact svg {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+/* tablets */
+@media (max-width: 760px) {
+  .topbar {
+    font-size: 0.72rem;
+  }
+
+  .topbar__contact {
+    gap: 16px;
+  }
+}
+
+/* phones: email collapses to an icon so everything stays on one line */
+@media (max-width: 560px) {
+  .topbar__email {
+    display: none;
+  }
+}
+
+/* very small phones: drop the "Founder:" label, keep the name */
+@media (max-width: 380px) {
+  .topbar__label {
+    display: none;
+  }
+
+  .topbar {
+    font-size: 0.68rem;
+  }
+}
+
 /* ---------- header ---------- */
 
 .header {
@@ -286,10 +374,6 @@ p {
   backdrop-filter: blur(12px);
   color: var(--ink);
   box-shadow: 0 1px 0 rgba(29, 27, 25, 0.08);
-}
-
-.header--solid .header__inner {
-  height: 72px;
 }
 
 .logo {
@@ -463,11 +547,11 @@ p {
   /* full-screen panel under the header */
   .nav {
     position: fixed;
-    top: 72px;
+    top: calc(72px + var(--topbar-h));
     left: 0;
     right: 0;
-    height: calc(100vh - 72px);
-    height: calc(100dvh - 72px);
+    height: calc(100vh - 72px - var(--topbar-h));
+    height: calc(100dvh - 72px - var(--topbar-h));
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -626,7 +710,7 @@ p {
   grid-template-columns: 1.05fr 1fr;
   align-items: center;
   gap: clamp(40px, 6vw, 96px);
-  padding-top: 116px;
+  padding-top: calc(116px + var(--topbar-h));
   padding-bottom: 56px;
 }
 
@@ -764,7 +848,7 @@ p {
 
   .hero__grid {
     grid-template-columns: 1fr;
-    padding-top: 104px;
+    padding-top: calc(104px + var(--topbar-h));
     padding-bottom: 48px;
   }
 
@@ -1614,7 +1698,7 @@ p {
 
 .page-hero__content {
   position: relative;
-  padding-top: 140px;
+  padding-top: calc(140px + var(--topbar-h));
   padding-bottom: clamp(48px, 7vw, 88px);
 }
 
