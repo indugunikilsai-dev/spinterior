@@ -139,7 +139,7 @@ export default function Home() {
             sub="A clear five-step journey, so you always know what happens next."
           >
             <Link to="/process" className="link-arrow link-arrow--light">
-              Learn more <Icon name="arrow" size={18} />
+              Explore our interior design process <Icon name="arrow" size={18} />
             </Link>
           </SectionHead>
           <ProcessSteps />
