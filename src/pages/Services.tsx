@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
+import Img from '../components/Img'
 import { PageHero, SectionHead, SiteWork } from '../components/Sections'
 import { CONTACT, homeServices, services, slug } from '../data'
 
@@ -45,7 +46,12 @@ export default function Services() {
                 className={`service-row reveal ${i % 2 ? 'service-row--flip' : ''}`}
               >
                 <div className="service-row__media">
-                  <img src={s.image} alt={s.title} loading="lazy" />
+                  <Img
+                    src={s.image}
+                    alt={s.title}
+                    loading="lazy"
+                    sizes="(max-width: 860px) calc(100vw - 48px), 640px"
+                  />
                 </div>
                 <div className="service-row__copy">
                   <span className="service__icon">
@@ -73,7 +79,7 @@ export default function Services() {
 
       {/* ---------- home services ---------- */}
       <section className="hs-hero" id="home-services">
-        <img className="hs-hero__bg" src="/images/bath-2.webp" alt="" loading="lazy" />
+        <Img className="hs-hero__bg" src="/images/bath-2.webp" alt="" loading="lazy" sizes="100vw" />
         <div className="hs-hero__shade" />
         <div className="container hs-hero__inner">
           <div className="hs-hero__copy reveal">

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
+import Img from '../components/Img'
 import { Cta, ProcessSteps, ProjectCard, SectionHead, ServiceCards } from '../components/Sections'
 import { projects } from '../data'
 import { AREAS } from '../seo'
@@ -51,10 +52,16 @@ export default function Home() {
 
           <div className="hero__media">
             <figure className="hero__main">
-              <img key={main.src} src={main.src} alt={main.alt} fetchPriority="high" />
+              <Img
+                key={main.src}
+                src={main.src}
+                alt={main.alt}
+                fetchPriority="high"
+                sizes="(max-width: 560px) calc(100vw - 80px), (max-width: 960px) 400px, 520px"
+              />
             </figure>
             <figure className="hero__inset">
-              <img key={inset.src} src={inset.src} alt={inset.alt} />
+              <Img key={inset.src} src={inset.src} alt={inset.alt} sizes="(max-width: 960px) 150px, 200px" />
             </figure>
             <div className="hero__tag">
               <span>Residential · Kitchens · Commercial</span>
@@ -67,7 +74,12 @@ export default function Home() {
       <section className="intro">
         <div className="container intro__grid">
           <div className="intro__media reveal">
-            <img src="/images/about.webp" alt="Bright living room with leather sofa and gallery wall" loading="lazy" />
+            <Img
+              src="/images/about.webp"
+              alt="Bright living room with leather sofa and gallery wall"
+              loading="lazy"
+              sizes="(max-width: 960px) calc(100vw - 48px), 520px"
+            />
           </div>
           <div className="intro__copy reveal">
             <p className="eyebrow">About SP Interior</p>
@@ -173,7 +185,12 @@ export default function Home() {
       <section className="founder">
         <div className="container founder__grid">
           <figure className="founder__media reveal">
-            <img src="/images/founder.webp" alt="Shekhar, founder of SP Interior" loading="lazy" />
+            <Img
+              src="/images/founder.webp"
+              alt="Shekhar, founder of SP Interior"
+              loading="lazy"
+              sizes="(max-width: 760px) 284px, 340px"
+            />
           </figure>
           <div className="founder__copy reveal">
             <p className="eyebrow">Meet the founder</p>

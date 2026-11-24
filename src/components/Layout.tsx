@@ -2,6 +2,7 @@ import { useEffect, useState, type CSSProperties } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { CONTACT, NAV, services } from '../data'
 import Icon from './Icon'
+import Img from './Img'
 import { getSeo, headTags } from '../seo'
 
 function useReveal(key: string) {
@@ -37,12 +38,13 @@ function useHeadTags(pathname: string) {
 function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link to="/" className={`logo ${light ? 'logo--light' : ''}`} aria-label="SP Interior home">
-      <img
+      <Img
         className="logo__mark"
-        src={encodeURI('/images/5 · Signature Script@1x.webp')}
+        src="/images/5 · Signature Script@1x.webp"
         alt="SP"
         width={84}
         height={56}
+        sizes="84px"
       />
       <span className="logo__text">
         Interior<small>Design Studio</small>
@@ -65,9 +67,13 @@ function Header() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
-    onScroll()
+    // Read the scroll position on the next frame, not right after hydration, to avoid a forced reflow.
+    const raf = requestAnimationFrame(onScroll)
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [])
 
   useEffect(() => {
@@ -161,20 +167,20 @@ function Footer() {
           </p>
         </div>
         <div>
-          <h4>Explore</h4>
+          <h2>Explore</h2>
           {NAV.map((n) => (
             <Link key={n.to} to={n.to}>{n.label}</Link>
           ))}
         </div>
         <div>
-          <h4>Services</h4>
+          <h2>Services</h2>
           {services.slice(0, 5).map((s) => (
             <Link key={s.title} to="/services">{s.title}</Link>
           ))}
           <Link to="/services#home-services">Home Services</Link>
         </div>
         <div>
-          <h4>Contact</h4>
+          <h2>Contact</h2>
           <a href={CONTACT.phoneHref}>{CONTACT.phone}</a>
           <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
           <a href={CONTACT.mapLink} target="_blank" rel="noopener noreferrer">{CONTACT.shortAddress}</a>
@@ -210,17 +216,19 @@ function WhatsAppButton() {
 }
 
 export default function Layout() {
-  const { pathname, hash } = useLocation()
+  const { pathname, hash, key } = useLocation()
 
   useEffect(() => {
     const target = hash ? document.getElementById(decodeURIComponent(hash.slice(1))) : null
     if (target) {
       target.classList.add('is-visible')
       target.scrollIntoView({ behavior: 'instant', block: 'start' })
-    } else {
+    } else if (key !== 'default') {
+      // Scroll to the top on in-app navigation. On the first page load ("default" key) the browser
+      // is already at the right position, and scrolling here would force a layout during hydration.
       window.scrollTo({ top: 0, behavior: 'instant' })
     }
-  }, [pathname, hash])
+  }, [pathname, hash, key])
 
   useReveal(pathname)
   useHeadTags(pathname)

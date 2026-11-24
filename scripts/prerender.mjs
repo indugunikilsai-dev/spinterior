@@ -11,12 +11,35 @@ const { render, getSeo, headTags, pageImages, ROUTES, SITE_URL } = await import(
   pathToFileURL(path.join(root, 'dist-ssr', 'entry-server.js')).href
 )
 
-const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8')
+// Inline the (small) stylesheet so the first paint doesn't wait for a separate CSS request.
+const template = fs
+  .readFileSync(path.join(dist, 'index.html'), 'utf8')
+  .replace(/<link rel="stylesheet"[^>]*href="(\/assets\/[^"]+\.css)"[^>]*>/, (_, href) => {
+    const css = fs.readFileSync(path.join(dist, href), 'utf8')
+    return `<style>${css}</style>`
+  })
 
-const page = (url) =>
-  template
-    .replace('<!--seo-->', headTags(getSeo(url)))
-    .replace('<div id="root"></div>', `<div id="root">${render(url)}</div>`)
+// Preload the page's main (LCP) image, marked fetchpriority="high" in the markup, so it starts
+// downloading as soon as the <head> arrives instead of after the inlined CSS has been parsed.
+const lcpPreload = (body) => {
+  const img = body.match(/<img\b[^>]*\bfetchpriority="high"[^>]*>/i)?.[0]
+  if (!img) return ''
+  const attr = (name) => img.match(new RegExp(`\\b${name}="([^"]*)"`, 'i'))?.[1]
+  const srcset = attr('srcset')
+  const sizes = attr('sizes')
+  return (
+    `<link rel="preload" as="image" href="${attr('src')}"` +
+    (srcset ? ` imagesrcset="${srcset}" imagesizes="${sizes}"` : '') +
+    ` fetchpriority="high" />\n    `
+  )
+}
+
+const page = (url) => {
+  const body = render(url)
+  return template
+    .replace('<!--seo-->', () => lcpPreload(body) + headTags(getSeo(url)))
+    .replace('<div id="root"></div>', () => `<div id="root">${body}</div>`)
+}
 
 for (const url of ROUTES) {
   const file = url === '/' ? path.join(dist, 'index.html') : path.join(dist, url, 'index.html')

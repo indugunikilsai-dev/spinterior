@@ -2,6 +2,7 @@ import { useState, type FormEvent, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { CONTACT, process, services, slug, type Project } from '../data'
 import Icon from './Icon'
+import Img from './Img'
 
 /* ---------- recent work from our own sites ---------- */
 
@@ -29,7 +30,7 @@ export function SiteWork() {
         <ul className="site-work__strip">
           {SITE_WORK.map((w) => (
             <li key={w.src} className="site-work__item">
-              <img src={w.src} alt={w.alt} loading="lazy" />
+              <Img src={w.src} alt={w.alt} loading="lazy" sizes="(max-width: 560px) 62vw, (max-width: 960px) 44vw, 260px" />
               <span>{w.title}</span>
             </li>
           ))}
@@ -56,7 +57,7 @@ export function PageHero({
 }) {
   return (
     <section className="page-hero">
-      <img className="page-hero__bg" src={image} alt="" />
+      <Img className="page-hero__bg" src={image} alt="" fetchPriority="high" sizes="100vw" />
       <div className="page-hero__shade" />
       <div className="container page-hero__content">
         <nav className="crumbs" aria-label="Breadcrumb">
@@ -106,7 +107,12 @@ export function ProjectCard({ project, wide = false, delay = 0 }: { project: Pro
       className={`project ${wide ? 'project--wide' : ''}`}
       style={{ animationDelay: `${delay}ms` }}
     >
-      <img src={project.images[0]} alt={project.title} loading="lazy" />
+      <Img
+        src={project.images[0]}
+        alt={project.title}
+        loading="lazy"
+        sizes={`(max-width: 520px) calc(100vw - 48px), (max-width: 860px) 50vw, ${wide ? 820 : 420}px`}
+      />
       <span className="project__overlay">
         <span className="project__meta">
           {project.category} · {project.year}
@@ -133,7 +139,12 @@ export function ServiceCards() {
           <Link to={`/services#${slug(s.title)}`} className="svc-card">
             <div className="svc-card__media">
               <div className="svc-card__img">
-                <img src={s.image} alt={s.title} loading="lazy" />
+                <Img
+                  src={s.image}
+                  alt={s.title}
+                  loading="lazy"
+                  sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 1024px) 50vw, 400px"
+                />
               </div>
               <span className="svc-card__num">
                 0{i + 1}
@@ -191,7 +202,7 @@ export function Cta({
 }) {
   return (
     <section className="cta">
-      <img src="/images/exterior.webp" alt="" loading="lazy" />
+      <Img src="/images/exterior.webp" alt="" loading="lazy" sizes="100vw" />
       <div className="cta__shade" />
       <div className="container cta__inner reveal">
         <h2>{title}</h2>

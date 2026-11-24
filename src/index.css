@@ -4,9 +4,9 @@
   --stone: #d9cfc1;
   --ink: #1d1b19;
   --ink-soft: #4a4540;
-  --muted: #7a7168;
-  --accent: #a8743f;
-  --accent-dark: #8a5d2f;
+  --muted: #685f57;
+  --accent: #8f5c2c;
+  --accent-dark: #744a22;
   --white: #fff;
   --radius: 4px;
   --shadow: 0 24px 60px -24px rgba(29, 27, 25, 0.35);
@@ -2809,7 +2809,7 @@ p {
   gap: 12px;
 }
 
-.footer h4 {
+.footer h2 {
   color: var(--white);
   font-size: 1.35rem;
   margin-bottom: 8px;
@@ -2918,7 +2918,7 @@ p {
 .whatsapp:hover,
 .whatsapp:focus-visible {
   gap: 10px;
-  background: #1ebe5a;
+  background: #0f7a5c; /* darker green so the white "Chat with us" label is readable (5.3:1) */
   transform: translateY(-2px);
 }
 

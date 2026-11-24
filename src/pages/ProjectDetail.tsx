@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Icon from '../components/Icon'
+import Img from '../components/Img'
 import { ProjectCard, SectionHead } from '../components/Sections'
 import { projects } from '../data'
 import NotFound from './NotFound'
@@ -25,7 +26,14 @@ export default function ProjectDetail() {
   return (
     <>
       <section className="detail-hero">
-        <img key={project.id} className="detail-hero__bg" src={project.images[0]} alt="" />
+        <Img
+          key={project.id}
+          className="detail-hero__bg"
+          src={project.images[0]}
+          alt=""
+          fetchPriority="high"
+          sizes="100vw"
+        />
         <div className="page-hero__shade" />
         <div className="container page-hero__content">
           <nav className="crumbs" aria-label="Breadcrumb">
@@ -49,7 +57,12 @@ export default function ProjectDetail() {
         <div className="container detail__grid">
           <div className="detail__gallery reveal">
             <div className="detail__main">
-              <img key={project.images[img]} src={project.images[img]} alt={`${project.title}, image ${img + 1}`} />
+              <Img
+                key={project.images[img]}
+                src={project.images[img]}
+                alt={`${project.title}, image ${img + 1}`}
+                sizes="(max-width: 900px) calc(100vw - 48px), 760px"
+              />
               {project.images.length > 1 && (
                 <>
                   <button
@@ -78,7 +91,7 @@ export default function ProjectDetail() {
                     aria-label={`Show image ${i + 1}`}
                     onClick={() => setImg(i)}
                   >
-                    <img src={src} alt="" loading="lazy" />
+                    <Img src={src} alt="" loading="lazy" sizes="(max-width: 900px) 25vw, 180px" />
                   </button>
                 ))}
               </div>

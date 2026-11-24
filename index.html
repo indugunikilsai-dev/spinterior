@@ -13,12 +13,7 @@
     <meta name="ICBM" content="17.5481769, 78.2898931" />
     <link rel="apple-touch-icon" href="/images/5%20%C2%B7%20Signature%20Script%401x.png" />
     <meta name="google-site-verification" content="LfkcsmE2h2GoEywahTOE90keRXtwLhgVPUi6U-RUW9k" />
-    <meta name="description" content="SP Interior — residential and commercial interior design, modular kitchens, wardrobes and turnkey execution." />
-    <title>SP Interior</title>
-        <meta name="description"
-          content="SP Interior Design and Studio offers home interior design,
-          modular kitchens, bedroom interiors, custom furniture,
-          professional carpenter services, woodwork and home renovation.">
+    <!-- Each page's title and description come from src/seo.ts via the seo placeholder above. -->
     <meta name="keywords"
           content="SP Interior Design and Studio,
           SP Interior Design,
@@ -48,7 +43,10 @@
           custom woodwork">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <!-- Fonts load without blocking the first paint; text shows in the fallback font until they arrive. -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" /></noscript>
   </head>
   <body>
     <div id="root"></div>
